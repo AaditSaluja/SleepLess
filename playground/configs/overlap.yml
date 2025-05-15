@@ -1,0 +1,28 @@
+cluster:
+  gpus: 4
+  cpu_cores: 16
+
+workload:
+  generator: sample
+  params:
+    job_profiles:
+      - name: small
+        count: 100
+        epochs_range: [3,4]
+        batch_sizes: [64]
+        batches_per_epoch: 200
+        cpu_ms_range: [56,61]
+        gpu_ms_range: [36,38]
+        submit_rate: 1/30
+      - name: large
+        count: 200
+        epochs_range: [1,2]
+        batch_sizes: [128]
+        batches_per_epoch: 100
+        cpu_ms_range: [102,107]
+        gpu_ms_range: [72,74]
+        submit_rate: 1/120
+
+scheduler:
+  name: sleepless
+  params: {}
